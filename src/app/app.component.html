@@ -1,6 +1,6 @@
  <nav>
     <mat-toolbar color="gray">
-       <span>GOKSPEL</span>
+       <span>RAADSPEL</span>
        <span class="fill-remaining"></span>
        <!-- <span><mat-icon class="material-icons">home</mat-icon></span> -->
     </mat-toolbar>
@@ -23,12 +23,12 @@
 
      
        <div fxLayout="row wrap" *ngIf="log > 0 && getal != rand && secondLocal >0" class="form-control">
-        <div fxflex="50" fxLayout="column" fxFlex.lt-md="100" >
+        <div fxflex="50" fxLayout="column" fxFlex.lt-md="95" >
           <input type="number"  matInput min="1" max="100" [(ngModel)]="value" placeholder="getal" class="input-group bg-gray">
         </div>  
-        <div fxflex="50" fxLayout="column" fxFlex.lt-md="100"> 
+        <div fxflex="50" fxLayout="column" fxFlex.lt-md="95"> 
           <span matBadge="{{this.log}}" class="badge-info">
-            <button type="text" class="btn btn-primary btn-dark mat-raised-button" (click)="onSubmit()">Raden</button>
+            <button type="text" class="btn btn-primary btn-dark mat-raised-button" fxLayout="column" fxFlex.lt-md="100" fxf (click)="onSubmit()">Raden</button>
             </span>
           </div> 
         </div>
