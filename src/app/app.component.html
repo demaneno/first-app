@@ -32,11 +32,11 @@
             </span>
           </div> 
         </div>
-        <div>
+        <div fxLayout="column" fxFlex.lt-md="80">
             <p *ngIf="getal > rand">Het getal is kleiner</p>
             <p *ngIf="getal < rand">Het getal is groter</p>
         </div>
-        <div *ngIf="getal == rand">
+        <div *ngIf="getal == rand" fxLayout="column" fxFlex.lt-md="20">
             <p>Je hebt gewonnen!! 
             <span>
               <mat-icon class="material-icons">
@@ -45,10 +45,11 @@
             </span>
             </p> 
         </div>
-        <div *ngIf="getal != rand && secondLocal <= 0 || (getal != rand && log == 0)">
+     
+        <div *ngIf="getal != rand && secondLocal <= 0 || (getal != rand && log == 0)" fxLayout="column" fxFlex.lt-md="80">
           <p>Je bent spijtig genoeg verloren 
             <span>
-              <mat-icon class="material-icons">
+              <mat-icon class="material-icons" fxLayout="column" fxFlex.lt-md="20">
                 thumb_down
               </mat-icon>
             </span>
