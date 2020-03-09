@@ -7,15 +7,13 @@ import { Subject } from 'rxjs';
 
 export class CounterService {
   private counter = 60;
-
   secondsSubject: Subject<number> = new Subject<number>();
   seconds = this.secondsSubject.asObservable();
-
+  
   constructor(){
-    setInterval(()=>{
+      setInterval(()=>{
       this.counter -=1;
       this.secondsSubject.next(this.counter);
-    }, 1000)
+      },1000)
   }
 }
-

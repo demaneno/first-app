@@ -1,5 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { CounterService} from '../common/services/counter.service'
+
 
 function randomIntFromInterval(min, max) { // min and max included 
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -19,13 +21,25 @@ export class AppComponent {
   getal : number;
   rand: number = randomIntFromInterval(1,100);
   showLog = false;
+  secondLocal: number = 60;
 
-  CounterService(){ }
+ constructor(counterService: CounterService){
+   counterService.seconds.subscribe((seconds)=> {
+    this.secondLocal = seconds;
+   })
+  }
+
 
   onSetTimer(){
-    return this.CounterService();
-  }
     
+  }
+ 
+  onStart(){
+    // 
+    this.onSetTimer();
+
+  }
+
   onSubmit(){    
     if(this.value >0 ){
       this.onShowLog();
@@ -53,7 +67,7 @@ export class AppComponent {
   }
 
   onRefreshPage(){
-    if(this.getal == this.rand || this.log ==0){
+    if(this.getal == this.rand || this.log ==0 || this.secondLocal == 0){
       setTimeout(
         function refreshPage(){
           location.reload();

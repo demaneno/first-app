@@ -17,8 +17,12 @@
       <!-- <p {{onSetTimer()}}></p> -->
       <!-- <p>{{onSetCounter()}}</p> -->
       <!-- <p>{{log}}</p> -->
+      <span *ngIf="secondLocal > 0">
+      <p>Je hebt nog {{secondLocal}} over.</p>
+    </span>
+
       <div class="container">
-       <div *ngIf="log > 0 && getal != rand" class="form-control">
+       <div *ngIf="log > 0 && getal != rand && secondLocal >0" class="form-control">
           <input type="number"  matInput min="1" max="100" [(ngModel)]="value" placeholder="getal" class="input-group bg-gray">
           <span matBadge="{{this.log}}" class="badge-info">
             <button type="text" class="btn btn-primary btn-dark mat-raised-button" (click)="onSubmit()">Raden</button>
@@ -37,7 +41,7 @@
             </span>
             </p> 
         </div>
-        <div *ngIf="getal != rand && log == 0">
+        <div *ngIf="secondLocal <= 0 || (getal != rand && log == 0)">
           <p>Je bent spijtig genoeg verloren 
             <span>
               <mat-icon class="material-icons">
@@ -46,6 +50,9 @@
             </span>
           </p> 
       </div> 
-      </div>      
+      </div>    
+      <!-- <div class="container">
+        <button type="text" class="btn btn-primary btn-dark mat-raised-button" (click)="onStart()">Spelen</button>
+      </div>   -->
     </aside>  
   </body>
