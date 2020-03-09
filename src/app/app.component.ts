@@ -26,6 +26,10 @@ export class AppComponent {
  constructor(counterService: CounterService){
    counterService.seconds.subscribe((seconds)=> {
     this.secondLocal = seconds;
+
+    if(this.secondLocal <=0 ){
+      this.onRefreshPage();
+      }
    })
   }
 
