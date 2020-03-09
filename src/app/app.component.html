@@ -11,22 +11,26 @@
     <h3><b>Uitleg:</b></h3>
     <p> Het doel van het spel is om het willekeurig gekozen getal te raden (tussen 1-100) binnen de aangegeven tijdslimiet.</p>
     <p> Hier heb je 10 pogingen voor en deze worden steeds aangegeven. De applicatie zal na elke gok een tip geven. </p>
-      <!-- , om het spel wat uitdagender te maken zal er ook een <b>tijdslimiet</b> zijn. -->
     <br>
     <aside>
       <!-- <p {{onSetTimer()}}></p> -->
       <!-- <p>{{onSetCounter()}}</p> -->
       <!-- <p>{{log}}</p> -->
-      <span *ngIf="secondLocal > 0">
-      <p>Je hebt nog {{secondLocal}} over.</p>
-    </span>
+      <div fxFlex fxLayout="column" fxLayoutGap="10px" style="height: 100vh;" class="container">
+        <div fxflex="100" fxLayout="column" fx *ngIf="secondLocal > 0">
+            <p>Je hebt nog {{secondLocal}} over.</p>
+        </div>
 
-      <div class="container">
-       <div *ngIf="log > 0 && getal != rand && secondLocal >0" class="form-control">
+     
+       <div fxLayout="row wrap" *ngIf="log > 0 && getal != rand && secondLocal >0" class="form-control">
+        <div fxflex="50" fxLayout="column" fxFlex.lt-md="100" >
           <input type="number"  matInput min="1" max="100" [(ngModel)]="value" placeholder="getal" class="input-group bg-gray">
+        </div>  
+        <div fxflex="50" fxLayout="column" fxFlex.lt-md="100"> 
           <span matBadge="{{this.log}}" class="badge-info">
             <button type="text" class="btn btn-primary btn-dark mat-raised-button" (click)="onSubmit()">Raden</button>
             </span>
+          </div> 
         </div>
         <div>
             <p *ngIf="getal > rand">Het getal is kleiner</p>
@@ -41,7 +45,7 @@
             </span>
             </p> 
         </div>
-        <div *ngIf="secondLocal <= 0 || (getal != rand && log == 0)">
+        <div *ngIf="getal != rand && secondLocal <= 0 || (getal != rand && log == 0)">
           <p>Je bent spijtig genoeg verloren 
             <span>
               <mat-icon class="material-icons">
@@ -51,8 +55,5 @@
           </p> 
       </div> 
       </div>    
-      <!-- <div class="container">
-        <button type="text" class="btn btn-primary btn-dark mat-raised-button" (click)="onStart()">Spelen</button>
-      </div>   -->
     </aside>  
   </body>

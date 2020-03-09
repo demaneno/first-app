@@ -71,7 +71,7 @@ export class AppComponent {
   }
 
   onRefreshPage(){
-    if(this.getal == this.rand || this.log ==0 || this.secondLocal == 0){
+    if(this.getal == this.rand || this.log ==0 || this.secondLocal <= 0){
       setTimeout(
         function refreshPage(){
           location.reload();
