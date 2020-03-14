@@ -48,7 +48,9 @@ export class AppComponent {
     if(this.value >0 ){
       this.onShowLog();
       this.onSetValue();
+      if(this.getal == this.rand || this.log ==0 || this.secondLocal <= 0){
       this.onRefreshPage();
+      }
       return this.value;
     }    
   }
@@ -70,13 +72,11 @@ export class AppComponent {
     return this.log = this.log - 1;
   }
 
-  onRefreshPage(){
-    if(this.getal == this.rand || this.log ==0 || this.secondLocal <= 0){
+  onRefreshPage(){   
       setTimeout(
         function refreshPage(){
           location.reload();
-      },500);
-    }
+      },2000);
 }
 
     
